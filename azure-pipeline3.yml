@@ -1,0 +1,21 @@
+# Repo: MySpace/UserRepo
+# File: azure-pipeline3.yml
+
+name: cicd_ci
+
+trigger:
+  branches:
+    include:
+      - master
+
+resources:
+  repositories:
+  - repository: JBC-LBP-LLC
+    type: git
+    name: azure-devops-pipeline-tutorial
+    ref: 'refs/heads/master'
+
+stages:
+- stage: CI_Checks
+  jobs:
+  - template: ci_template.yml@ci_template
